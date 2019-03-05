@@ -1,9 +1,0 @@
-D:\source\GenericRecords\Business\bin\Debug\netstandard2.0\Business.deps.json
-D:\source\GenericRecords\Business\bin\Debug\netstandard2.0\Business.dll
-D:\source\GenericRecords\Business\bin\Debug\netstandard2.0\Business.pdb
-D:\source\GenericRecords\Business\obj\Debug\netstandard2.0\Business.csprojAssemblyReference.cache
-D:\source\GenericRecords\Business\obj\Debug\netstandard2.0\Business.csproj.CoreCompileInputs.cache
-D:\source\GenericRecords\Business\obj\Debug\netstandard2.0\Business.AssemblyInfoInputs.cache
-D:\source\GenericRecords\Business\obj\Debug\netstandard2.0\Business.AssemblyInfo.cs
-D:\source\GenericRecords\Business\obj\Debug\netstandard2.0\Business.dll
-D:\source\GenericRecords\Business\obj\Debug\netstandard2.0\Business.pdb
