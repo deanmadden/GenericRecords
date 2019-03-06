@@ -25,9 +25,7 @@ namespace Business
 
         public List<Category> GetAll()
         {
-            List<Category> categories = new List<Category>();
-
-            return categories;
+            return dbWrapper.GetCategories();
         }
     }
 }
