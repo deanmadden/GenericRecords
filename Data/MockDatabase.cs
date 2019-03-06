@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Collections.Specialized;
 using Business;
 
 namespace Data
@@ -7,6 +6,8 @@ namespace Data
     public class MockDatabase : IDatabaseWrapper
     {
         public List<Category> Categories { get; set; }
+
+        public List<Record> Records { get; set; }
 
         public void CreateCategory(Category category)
         {
@@ -18,9 +19,24 @@ namespace Data
             Categories.Add(category);
         }
 
+        public void CreateRecord(Record record)
+        {
+            if (Records == null)
+            {
+                Records = new List<Record>();
+            }
+
+            Records.Add(record);
+        }
+
         public List<Category> GetCategories()
         {
             return Categories;
+        }
+
+        public List<Record> GetRecords()
+        {
+            return Records;
         }
     }
 }

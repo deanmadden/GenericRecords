@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Specialized;
 
 namespace Business
 {
@@ -19,5 +14,18 @@ namespace Business
         /// The entries.
         /// </value>
         public NameValueCollection Entries { get; set; }
+
+        public Category Category { get; set; }
+
+        public Record(Category category)
+        {
+            Category = category;
+            Entries = new NameValueCollection();
+
+            foreach (var item in category.Fields)
+            {
+                Entries.Add(item, string.Empty);
+            }
+        }
     }
 }

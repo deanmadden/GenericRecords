@@ -15,7 +15,7 @@ namespace BusinessTests
             // arrange
 
             MockDatabase mockDatabase = new MockDatabase();
-            Category dog = InitialiseDogCategory();
+            Category dog = TestsHelper.InitialiseDogCategory();
 
             CategoryManager categoryManager = new CategoryManager(mockDatabase);
 
@@ -39,7 +39,7 @@ namespace BusinessTests
             // arrange
 
             MockDatabase mockDatabase = new MockDatabase();
-            Category aeroplane = InitialiseAeroplaneCategory();
+            Category aeroplane = TestsHelper.InitialiseAeroplaneCategory();
 
             CategoryManager categoryManager = new CategoryManager(mockDatabase);
 
@@ -63,8 +63,8 @@ namespace BusinessTests
             // arrange
 
             MockDatabase mockDatabase = new MockDatabase();
-            Category dog = InitialiseDogCategory();
-            Category aeroplane = InitialiseAeroplaneCategory();
+            Category dog = TestsHelper.InitialiseDogCategory();
+            Category aeroplane = TestsHelper.InitialiseAeroplaneCategory();
             CategoryManager categoryManager = new CategoryManager(mockDatabase);
             categoryManager.Create(aeroplane);
             categoryManager.Create(dog);
@@ -80,20 +80,6 @@ namespace BusinessTests
             Assert.AreEqual("Dog", result[1].Name, "Incorrect dog category");
         }
 
-        private static Category InitialiseDogCategory()
-        {
-            Category dog = new Category("Dog");
-            List<string> dogfields = new List<string>(new string[] { "Breed", "Colour", "Size" });
-            dog.Fields = dogfields;
-            return dog;
-        }
 
-        private static Category InitialiseAeroplaneCategory()
-        {
-            Category aeroplane = new Category("Aeroplane");
-            List<string> aeroplanefields = new List<string>(new string[] { "Make", "Model", "Engine" });
-            aeroplane.Fields = aeroplanefields;
-            return aeroplane;
-        }
     }
 }

@@ -11,5 +11,7 @@ namespace Business
         List<Category> GetCategories();
 
         void CreateCategory(Category category);
+
+        void CreateRecord(Record record);
     }
 }
