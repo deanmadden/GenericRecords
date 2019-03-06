@@ -1,16 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace Business
 {
     /// <summary>
     /// Category
     /// </summary>
+    [DataContract]
     public class Category
     {
-        public string Name { get; }
+        [DataMember]
+        public string Name { get; set; }
 
-        public DateTime Created { get; }
+        [DataMember]
+        public DateTime Created { get; set; }
+
+        public Category()
+        {
+
+        }
 
         public Category(string name)
         {
@@ -25,6 +34,7 @@ namespace Business
         /// <value>
         /// The fields.
         /// </value>
+        [DataMember]
         public List<string> Fields { get; set; }
 
     }
