@@ -10,6 +10,8 @@ namespace Business
     {
         List<Category> GetCategories();
 
+        List<Record> GetAllRecords();
+
         void CreateCategory(Category category);
 
         void CreateRecord(Record record);

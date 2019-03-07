@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Business;
 using Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -7,10 +6,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace BusinessTests
 {
     [TestClass]
-    public class CategoryManagerTests
+    public class RecordManagerTests
     {
         [TestMethod]
-        public void CreateDogCategoryTest()
+        public void CreateDogRecordTest()
         {
             // arrange
 
@@ -34,7 +33,7 @@ namespace BusinessTests
         }
 
         [TestMethod]
-        public void CreateAeroplaneCategoryTest()
+        public void CreateAeroplaneRecordTest()
         {
             // arrange
 
@@ -58,7 +57,7 @@ namespace BusinessTests
         }
 
         [TestMethod]
-        public void GetAllCategoriesTest()
+        public void GetAllRecordsTest()
         {
             // arrange
 

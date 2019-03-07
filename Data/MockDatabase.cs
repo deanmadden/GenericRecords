@@ -29,14 +29,14 @@ namespace Data
             Records.Add(record);
         }
 
+        public List<Record> GetAllRecords()
+        {
+            return Records;
+        }
+
         public List<Category> GetCategories()
         {
             return Categories;
-        }
-
-        public List<Record> GetRecords()
-        {
-            return Records;
         }
     }
 }

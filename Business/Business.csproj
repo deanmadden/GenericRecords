@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Audit.cs" />
     <Compile Include="Category.cs" />
     <Compile Include="CategoryManager.cs" />
     <Compile Include="IDatabaseWrapper.cs" />

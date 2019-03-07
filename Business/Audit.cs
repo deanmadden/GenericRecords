@@ -6,23 +6,28 @@ using System.Threading.Tasks;
 
 namespace Business
 {
-    public class RecordManager
+    public class Audit
     {
         private IDatabaseWrapper dbWrapper;
 
-        public RecordManager(IDatabaseWrapper databaseWrapper)
+        public Audit(IDatabaseWrapper databaseWrapper)
         {
             dbWrapper = databaseWrapper;
         }
 
         public void Create(Record record)
         {
-            dbWrapper.CreateRecord(record);
+
         }
 
-        public List<Record> GetAll()
+        public void Update(Record oldRecord, Record newRecord)
         {
-            return dbWrapper.GetAllRecords();
+
+        }
+
+        public void Delete(Record record)
+        {
+
         }
     }
 }

@@ -109,5 +109,73 @@ namespace BusinessTests
             Assert.AreEqual("747", record.Entries["Model"], "Incorrect Model");
             Assert.AreEqual("Rolls Royce", record.Entries["Engine"], "Incorrect Engine");
         }
+
+        [TestMethod]
+        public void DogRecordAddEntryTest()
+        {
+            // arrange
+
+            MockDatabase mockDatabase = new MockDatabase();
+            Category dog = TestsHelper.InitialiseDogCategory();
+            Category aeroplane = TestsHelper.InitialiseAeroplaneCategory();
+            CategoryManager categoryManager = new CategoryManager(mockDatabase);
+            categoryManager.Create(aeroplane);
+            categoryManager.Create(dog);
+            Record record = new Record(dog);
+
+            // act
+
+            bool result = record.AddEntry("Breed", "German Shepherd");
+
+            // assert
+
+            Assert.IsTrue(result, "Breed not added");
+            Assert.AreEqual("German Shepherd", record.Entries["Breed"], "Record entry not added correctly");
+        }
+
+        [TestMethod]
+        public void AeroplaneRecordAddEntryTest()
+        {
+            // arrange
+
+            MockDatabase mockDatabase = new MockDatabase();
+            Category dog = TestsHelper.InitialiseDogCategory();
+            Category aeroplane = TestsHelper.InitialiseAeroplaneCategory();
+            CategoryManager categoryManager = new CategoryManager(mockDatabase);
+            categoryManager.Create(aeroplane);
+            categoryManager.Create(dog);
+            Record record = new Record(aeroplane);
+
+            // act
+
+            bool result = record.AddEntry("Engine", "Rolls Royce");
+
+            // assert
+
+            Assert.IsTrue(result, "Engine not added");
+            Assert.AreEqual("Rolls Royce", record.Entries["Engine"], "Record entry not added correctly");
+        }
+
+        [TestMethod]
+        public void CheckAddingAeroplaneEntryToDogRecordFailsTest()
+        {
+            // arrange
+
+            MockDatabase mockDatabase = new MockDatabase();
+            Category dog = TestsHelper.InitialiseDogCategory();
+            Category aeroplane = TestsHelper.InitialiseAeroplaneCategory();
+            CategoryManager categoryManager = new CategoryManager(mockDatabase);
+            categoryManager.Create(aeroplane);
+            categoryManager.Create(dog);
+            Record record = new Record(dog);
+
+            // act
+
+            bool result = record.AddEntry("Engine", "Rolls Royce");
+
+            // assert
+
+            Assert.IsFalse(result, "Added Engine to Dog!");
+        }
     }
 }
