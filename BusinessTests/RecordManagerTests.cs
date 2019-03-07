@@ -15,21 +15,25 @@ namespace BusinessTests
 
             MockDatabase mockDatabase = new MockDatabase();
             Category dog = TestsHelper.InitialiseDogCategory();
-
             CategoryManager categoryManager = new CategoryManager(mockDatabase);
+            categoryManager.Create(dog);
+
+            Record record = new Record(dog);
+            record.AddEntry("Breed", "Rottweiler");
+            record.AddEntry("Colour", "Brown");
+            record.AddEntry("Size", "Big");
+            RecordManager recordManager = new RecordManager(mockDatabase);
 
             // act
 
-            categoryManager.Create(dog);
+            recordManager.Create(record);
 
             // assert
 
-            Assert.AreEqual(1, mockDatabase.Categories.Count, "Category not created");
-            Assert.AreEqual("Dog", mockDatabase.Categories[0].Name, "Incorrect category name");
-            Assert.AreEqual(3, mockDatabase.Categories[0].Fields.Count, "Incorrect number of fields.");
-            Assert.AreEqual("Breed", mockDatabase.Categories[0].Fields[0], "Incorrect field.");
-            Assert.AreEqual("Colour", mockDatabase.Categories[0].Fields[1], "Incorrect field.");
-            Assert.AreEqual("Size", mockDatabase.Categories[0].Fields[2], "Incorrect field.");
+            Assert.AreEqual("Dog", mockDatabase.Records[0].Category.Name, "Incorrect category");
+            Assert.AreEqual("Brown", mockDatabase.Records[0].Entries["Colour"], "Incorrect colour");
+            Assert.AreEqual("Rottweiler", mockDatabase.Records[0].Entries["Breed"], "Incorrect Breed");
+            Assert.AreEqual("Big", mockDatabase.Records[0].Entries["Size"], "Incorrect Size");
         }
 
         [TestMethod]
@@ -39,21 +43,25 @@ namespace BusinessTests
 
             MockDatabase mockDatabase = new MockDatabase();
             Category aeroplane = TestsHelper.InitialiseAeroplaneCategory();
-
             CategoryManager categoryManager = new CategoryManager(mockDatabase);
+            categoryManager.Create(aeroplane);
+
+            Record record = new Record(aeroplane);
+            record.AddEntry("Make", "Airbus");
+            record.AddEntry("Model", "A380");
+            record.AddEntry("Engine", "GE");
+            RecordManager recordManager = new RecordManager(mockDatabase);
 
             // act
 
-            categoryManager.Create(aeroplane);
+            recordManager.Create(record);
 
             // assert
 
-            Assert.AreEqual(1, mockDatabase.Categories.Count, "Category not created");
-            Assert.AreEqual("Aeroplane", mockDatabase.Categories[0].Name, "Incorrect category name");
-            Assert.AreEqual(3, mockDatabase.Categories[0].Fields.Count, "Incorrect number of fields.");
-            Assert.AreEqual("Make", mockDatabase.Categories[0].Fields[0], "Incorrect field.");
-            Assert.AreEqual("Model", mockDatabase.Categories[0].Fields[1], "Incorrect field.");
-            Assert.AreEqual("Engine", mockDatabase.Categories[0].Fields[2], "Incorrect field.");
+            Assert.AreEqual("Aeroplane", mockDatabase.Records[0].Category.Name, "Incorrect category");
+            Assert.AreEqual("Airbus", mockDatabase.Records[0].Entries["Make"], "Incorrect Make");
+            Assert.AreEqual("A380", mockDatabase.Records[0].Entries["Model"], "Incorrect Model");
+            Assert.AreEqual("GE", mockDatabase.Records[0].Entries["Engine"], "Incorrect Engine");
         }
 
         [TestMethod]
@@ -63,20 +71,43 @@ namespace BusinessTests
 
             MockDatabase mockDatabase = new MockDatabase();
             Category dog = TestsHelper.InitialiseDogCategory();
-            Category aeroplane = TestsHelper.InitialiseAeroplaneCategory();
             CategoryManager categoryManager = new CategoryManager(mockDatabase);
-            categoryManager.Create(aeroplane);
             categoryManager.Create(dog);
 
-            // Act
+            Record record = new Record(dog);
+            record.AddEntry("Breed", "Rottweiler");
+            record.AddEntry("Colour", "Brown");
+            record.AddEntry("Size", "Big");
 
-            var result = categoryManager.GetAll();
+            Category aeroplane = TestsHelper.InitialiseAeroplaneCategory();
+            categoryManager.Create(aeroplane);
 
-            // Assert
+            Record record2 = new Record(aeroplane);
+            record2.AddEntry("Make", "Airbus");
+            record2.AddEntry("Model", "A380");
+            record2.AddEntry("Engine", "GE");
 
-            Assert.AreEqual(2, result.Count, "Incorrect count");
-            Assert.AreEqual("Aeroplane", result[0].Name, "Incorrect aeroplane category");
-            Assert.AreEqual("Dog", result[1].Name, "Incorrect dog category");
+            RecordManager recordManager = new RecordManager(mockDatabase);
+            recordManager.Create(record);
+            recordManager.Create(record2);
+
+            // act
+
+            var result = recordManager.GetAll();
+
+            // assert
+
+            Assert.AreEqual(2, result.Count, "Incorrect number of records");
+            Assert.AreEqual("Dog", result[0].Category.Name, "Incorrect category");
+            Assert.AreEqual("Aeroplane", result[1].Category.Name, "Incorrect category");
+
+            Assert.AreEqual("Brown", result[0].Entries["Colour"], "Incorrect colour");
+            Assert.AreEqual("Rottweiler", result[0].Entries["Breed"], "Incorrect Breed");
+            Assert.AreEqual("Big", result[0].Entries["Size"], "Incorrect Size");
+
+            Assert.AreEqual("Airbus", result[1].Entries["Make"], "Incorrect Make");
+            Assert.AreEqual("A380", result[1].Entries["Model"], "Incorrect Model");
+            Assert.AreEqual("GE", result[1].Entries["Engine"], "Incorrect Engine");
         }
     }
 }

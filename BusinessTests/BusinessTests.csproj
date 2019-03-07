@@ -54,6 +54,7 @@
     <Compile Include="RecordTests.cs" />
     <Compile Include="TestsHelper.cs" />
     <Compile Include="RecordManagerTests.cs" />
+    <Compile Include="AuditTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
