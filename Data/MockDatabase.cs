@@ -5,6 +5,13 @@ namespace Data
 {
     public class MockDatabase : IDatabaseWrapper
     {
+        public MockDatabase()
+        {
+            Categories = new List<Category>();
+            Records = new List<Record>();
+            AuditLogs = new List<string>();
+        }
+
         public List<Category> Categories { get; set; }
 
         public List<Record> Records { get; set; }
@@ -18,21 +25,11 @@ namespace Data
 
         public void CreateCategory(Category category)
         {
-            if (Categories == null)
-            {
-                Categories = new List<Category>();
-            }
-
             Categories.Add(category);
         }
 
         public void CreateRecord(Record record)
         {
-            if (Records == null)
-            {
-                Records = new List<Record>();
-            }
-
             Records.Add(record);
         }
 

@@ -17,7 +17,16 @@ namespace Business
 
         public void Create(Record record)
         {
+            string auditMessage = $"Added record type {record.Category.Name}";
 
+            foreach (string key in record.Entries)
+            {
+                auditMessage += $", {key}={record.Entries[key]}";
+            }
+
+            auditMessage += ".";
+
+            dbWrapper.CreateAudit(auditMessage);
         }
 
         public void Update(Record oldRecord, Record newRecord)
