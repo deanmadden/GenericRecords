@@ -11,13 +11,13 @@ namespace Business
         /// Gets the categories.
         /// </summary>
         /// <returns></returns>
-        List<Category> GetCategories();
+        IList<Category> GetCategories();
 
         /// <summary>
         /// Gets all records.
         /// </summary>
         /// <returns></returns>
-        List<Record> GetAllRecords();
+        IList<Record> GetAllRecords();
 
         /// <summary>
         /// Creates the category.

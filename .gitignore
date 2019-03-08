@@ -11,3 +11,7 @@
 /BusinessTests/bin/Debug
 /BusinessTests/obj/Debug
 /Data/obj/Debug
+/Data/bin/Debug/LiteDB.xml
+/Service/bin/LiteDB.xml
+/TestingConsoleApp/bin/Debug
+/TestingConsoleApp/obj/Debug

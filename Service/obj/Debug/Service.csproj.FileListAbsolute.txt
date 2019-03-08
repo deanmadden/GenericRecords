@@ -88,3 +88,5 @@ D:\source\GenericRecords\Service\bin\Business.dll
 D:\source\GenericRecords\Service\bin\Data.dll
 D:\source\GenericRecords\Service\bin\Business.pdb
 D:\source\GenericRecords\Service\bin\Data.pdb
+D:\source\GenericRecords\Service\bin\LiteDB.dll
+D:\source\GenericRecords\Service\bin\LiteDB.xml

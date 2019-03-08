@@ -35,7 +35,7 @@ namespace Business
         /// Gets all.
         /// </summary>
         /// <returns></returns>
-        public List<Category> GetAll()
+        public IList<Category> GetAll()
         {
             return dbWrapper.GetCategories();
         }

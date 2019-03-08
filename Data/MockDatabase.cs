@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Business;
 
 namespace Data
@@ -12,11 +13,11 @@ namespace Data
             AuditLogs = new List<string>();
         }
 
-        public List<Category> Categories { get; set; }
+        public IList<Category> Categories { get; set; }
 
-        public List<Record> Records { get; set; }
+        public IList<Record> Records { get; set; }
 
-        public List<string> AuditLogs { get; set; }
+        public IList<string> AuditLogs { get; set; }
 
         public void CreateAudit(string details)
         {
@@ -33,14 +34,14 @@ namespace Data
             Records.Add(record);
         }
 
-        public List<Record> GetAllRecords()
+        public IList<Record> GetAllRecords()
         {
-            return Records;
+            return Records.ToList();
         }
 
-        public List<Category> GetCategories()
+        public IList<Category> GetCategories()
         {
-            return Categories;
+            return Categories.ToList();
         }
     }
 }

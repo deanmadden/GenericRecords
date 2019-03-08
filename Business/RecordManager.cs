@@ -35,7 +35,7 @@ namespace Business
         /// Gets all.
         /// </summary>
         /// <returns></returns>
-        public List<Record> GetAll()
+        public IList<Record> GetAll()
         {
             return dbWrapper.GetAllRecords();
         }
