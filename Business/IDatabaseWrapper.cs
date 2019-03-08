@@ -15,5 +15,7 @@ namespace Business
         void CreateCategory(Category category);
 
         void CreateRecord(Record record);
+
+        void CreateAudit(string details);
     }
 }

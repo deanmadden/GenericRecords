@@ -9,6 +9,13 @@ namespace Data
 
         public List<Record> Records { get; set; }
 
+        public List<string> AuditLogs { get; set; }
+
+        public void CreateAudit(string details)
+        {
+            AuditLogs.Add(details);
+        }
+
         public void CreateCategory(Category category)
         {
             if (Categories == null)

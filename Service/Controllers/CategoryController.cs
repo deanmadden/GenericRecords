@@ -2,13 +2,12 @@
 using System.Web.Http;
 using Business;
 using Data;
-using Newtonsoft.Json;
 
 namespace Service.Controllers
 {
     public class CategoryController : ApiController
     {
-        public string Get()
+        public IHttpActionResult Get()
         {
             MockDatabase mockDatabase = new MockDatabase();
 
@@ -20,7 +19,9 @@ namespace Service.Controllers
 
             var result = categoryManager.GetAll();
 
-            return JsonConvert.SerializeObject(result);
+            var json = Json(result);
+
+            return json;
         }
 
         private static Category InitialiseDogCategory()
