@@ -1,21 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Business
 {
+    /// <summary>
+    /// Database Wrapper interface
+    /// </summary>
     public interface IDatabaseWrapper
     {
+        /// <summary>
+        /// Gets the categories.
+        /// </summary>
+        /// <returns></returns>
         List<Category> GetCategories();
 
+        /// <summary>
+        /// Gets all records.
+        /// </summary>
+        /// <returns></returns>
         List<Record> GetAllRecords();
 
+        /// <summary>
+        /// Creates the category.
+        /// </summary>
+        /// <param name="category">The category.</param>
         void CreateCategory(Category category);
 
+        /// <summary>
+        /// Creates the record.
+        /// </summary>
+        /// <param name="record">The record.</param>
         void CreateRecord(Record record);
 
+        /// <summary>
+        /// Creates the audit.
+        /// </summary>
+        /// <param name="details">The details.</param>
         void CreateAudit(string details);
     }
 }
