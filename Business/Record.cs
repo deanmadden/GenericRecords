@@ -18,13 +18,13 @@ namespace Business
         public int Id { get; set; }
 
         /// <summary>
-        /// Gets the entries.
+        /// Gets or sets the entries.
         /// </summary>
         /// <value>
         /// The entries.
         /// </value>
         [DataMember]
-        public Dictionary<string, string> Entries { get; }
+        public Dictionary<string, string> Entries { get; set; }
 
         /// <summary>
         /// Gets or sets the category.

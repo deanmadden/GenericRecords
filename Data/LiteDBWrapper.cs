@@ -9,7 +9,7 @@ namespace Data
     {
         public void CreateAudit(Audit audit)
         {
-            using (var db = new LiteDatabase(@"GenericRecordsData.db"))
+            using (var db = new LiteDatabase(@"C:\Temp\GenericRecordsData.db"))
             {
                 var audits = db.GetCollection<Audit>("audits");
                 audits.Insert(audit);
@@ -18,7 +18,7 @@ namespace Data
 
         public void CreateCategory(Category category)
         {
-            using (var db = new LiteDatabase(@"GenericRecordsData.db"))
+            using (var db = new LiteDatabase(@"C:\Temp\GenericRecordsData.db"))
             {
                 var categories = db.GetCollection<Category>("categories");
                 categories.Insert(category);
@@ -27,7 +27,7 @@ namespace Data
 
         public void CreateRecord(Record record)
         {
-            using (var db = new LiteDatabase(@"GenericRecordsData.db"))
+            using (var db = new LiteDatabase(@"C:\Temp\GenericRecordsData.db"))
             {
                 var records = db.GetCollection<Record>("records");
                 records.Insert(record);
@@ -36,7 +36,7 @@ namespace Data
 
         public IList<Record> GetAllRecords()
         {
-            using (var db = new LiteDatabase(@"GenericRecordsData.db"))
+            using (var db = new LiteDatabase(@"C:\Temp\GenericRecordsData.db"))
             {
                 var records = db.GetCollection<Record>("records");
                 return records.FindAll().ToList();
@@ -45,7 +45,7 @@ namespace Data
 
         public IList<Category> GetCategories()
         {
-            using (var db = new LiteDatabase(@"GenericRecordsData.db"))
+            using (var db = new LiteDatabase(@"C:\Temp\GenericRecordsData.db"))
             {
                 var categories = db.GetCollection<Category>("categories");
                 return categories.FindAll().ToList();
@@ -54,7 +54,7 @@ namespace Data
 
         public IList<Audit> GetAuditRecords()
         {
-            using (var db = new LiteDatabase(@"GenericRecordsData.db"))
+            using (var db = new LiteDatabase(@"C:\Temp\GenericRecordsData.db"))
             {
                 var audits = db.GetCollection<Audit>("audits");
                 return audits.FindAll().ToList();

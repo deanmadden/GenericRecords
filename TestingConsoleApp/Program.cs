@@ -13,14 +13,35 @@ namespace TestingConsoleApp
     {
         public static void Main(string[] args)
         {
+            //CreateCategoriesAndDogRecord();
+
+            //CreateAeroplaneRecord();
+        }
+
+        private static void CreateAeroplaneRecord()
+        {
+            LiteDBWrapper dbwrapper = new LiteDBWrapper();
+            CategoryManager categoryManager = new CategoryManager(dbwrapper);
+            var categories = categoryManager.GetAll();
+
+            Record record = new Record(categories[1]);
+            record.AddEntry("Make", "Airbus");
+            record.AddEntry("Model", "A380");
+            record.AddEntry("Engine", "GE");
+            RecordManager recordManager = new RecordManager(dbwrapper);
+            recordManager.Create(record);
+        }
+
+        private static void CreateCategoriesAndDogRecord()
+        {
             LiteDBWrapper dbwrapper = new LiteDBWrapper();
             CategoryManager categoryManager = new CategoryManager(dbwrapper);
 
             Category dog = TestsHelper.InitialiseDogCategory();
-            //categoryManager.Create(dog);
+            categoryManager.Create(dog);
 
             Category aeroplane = TestsHelper.InitialiseAeroplaneCategory();
-            //categoryManager.Create(aeroplane);
+            categoryManager.Create(aeroplane);
 
             var categories = categoryManager.GetAll();
 
