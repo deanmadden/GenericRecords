@@ -1,0 +1,11 @@
+D:\source\GenericRecords\Data\bin\Debug\Data.dll
+D:\source\GenericRecords\Data\bin\Debug\Data.pdb
+D:\source\GenericRecords\Data\bin\Debug\Business.dll
+D:\source\GenericRecords\Data\bin\Debug\Business.pdb
+D:\source\GenericRecords\Data\obj\Debug\Data.csprojAssemblyReference.cache
+D:\source\GenericRecords\Data\obj\Debug\Data.csproj.CoreCompileInputs.cache
+D:\source\GenericRecords\Data\obj\Debug\Data.csproj.CopyComplete
+D:\source\GenericRecords\Data\obj\Debug\Data.dll
+D:\source\GenericRecords\Data\obj\Debug\Data.pdb
+D:\source\GenericRecords\Data\bin\Debug\LiteDB.dll
+D:\source\GenericRecords\Data\bin\Debug\LiteDB.xml

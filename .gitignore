@@ -5,13 +5,9 @@
 /.vs/GenericRecords/v15/.suo
 /.vs/GenericRecords/v15/Server/sqlite3/db.lock
 *.user
-*.dll
 *.pdb
 /Business/obj/Debug
 /BusinessTests/bin/Debug
 /BusinessTests/obj/Debug
-/Data/obj/Debug
-/Data/bin/Debug/LiteDB.xml
-/Service/bin/LiteDB.xml
 /TestingConsoleApp/bin/Debug
 /TestingConsoleApp/obj/Debug
