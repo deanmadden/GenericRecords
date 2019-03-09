@@ -13,10 +13,26 @@
         /// </value>
         public int Id { get; set; }
 
+        /// <summary>
+        /// Gets or sets the message.
+        /// </summary>
+        /// <value>
+        /// The message.
+        /// </value>
+        public string Message { get; set; }
+
         private IDatabaseWrapper dbWrapper;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Audit"/> class.
+        /// </summary>
+        public Audit()
+        {
+
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Audit" /> class.
         /// </summary>
         /// <param name="databaseWrapper">The database wrapper.</param>
         public Audit(IDatabaseWrapper databaseWrapper)
@@ -32,14 +48,16 @@
         {
             string auditMessage = $"Added record type {record.Category.Name}";
 
-            foreach (string key in record.Entries)
+            foreach (var item in record.Entries)
             {
-                auditMessage += $", {key}={record.Entries[key]}";
+                auditMessage += $", {item.Key}={item.Value}";
             }
 
             auditMessage += ".";
 
-            dbWrapper.CreateAudit(auditMessage);
+            this.Message = auditMessage;
+
+            dbWrapper.CreateAudit(this);
         }
 
         /// <summary>

@@ -35,6 +35,12 @@ namespace Business
         /// Creates the audit.
         /// </summary>
         /// <param name="details">The details.</param>
-        void CreateAudit(string details);
+        void CreateAudit(Audit audit);
+
+        /// <summary>
+        /// Gets the audit records.
+        /// </summary>
+        /// <returns></returns>
+        IList<Audit> GetAuditRecords();
     }
 }

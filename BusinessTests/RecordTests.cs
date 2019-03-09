@@ -28,9 +28,9 @@ namespace BusinessTests
 
             Assert.AreEqual("Dog", record.Category.Name);
             Assert.AreEqual(3, record.Entries.Count, "Incorrect entry count");
-            Assert.AreEqual("Breed", record.Entries.AllKeys[0], "Incorrect Breed key");
-            Assert.AreEqual("Colour", record.Entries.AllKeys[1], "Incorrect Colour key");
-            Assert.AreEqual("Size", record.Entries.AllKeys[2], "Incorrect Size key");
+            Assert.IsTrue(record.Entries.ContainsKey("Breed"), "Incorrect Breed key");
+            Assert.IsTrue(record.Entries.ContainsKey("Colour"), "Incorrect Colour key");
+            Assert.IsTrue(record.Entries.ContainsKey("Size"), "Incorrect Size key");
         }
 
         [TestMethod]
@@ -53,9 +53,9 @@ namespace BusinessTests
 
             Assert.AreEqual("Aeroplane", record.Category.Name);
             Assert.AreEqual(3, record.Entries.Count, "Incorrect entry count");
-            Assert.AreEqual("Make", record.Entries.AllKeys[0], "Incorrect Make key");
-            Assert.AreEqual("Model", record.Entries.AllKeys[1], "Incorrect Model key");
-            Assert.AreEqual("Engine", record.Entries.AllKeys[2], "Incorrect Engine key");
+            Assert.IsTrue(record.Entries.ContainsKey("Make"), "Incorrect Make key");
+            Assert.IsTrue(record.Entries.ContainsKey("Model"), "Incorrect Model key");
+            Assert.IsTrue(record.Entries.ContainsKey("Engine"), "Incorrect Engine key");
         }
 
         [TestMethod]

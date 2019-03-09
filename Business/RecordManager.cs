@@ -29,6 +29,8 @@ namespace Business
         public void Create(Record record)
         {
             dbWrapper.CreateRecord(record);
+            Audit audit = new Audit(dbWrapper);
+            audit.Create(record);
         }
 
         /// <summary>

@@ -1,4 +1,6 @@
-﻿using System.Collections.Specialized;
+﻿using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Runtime.Serialization;
 
 namespace Business
 {
@@ -21,7 +23,8 @@ namespace Business
         /// <value>
         /// The entries.
         /// </value>
-        public NameValueCollection Entries { get; }
+        [DataMember]
+        public Dictionary<string, string> Entries { get; }
 
         /// <summary>
         /// Gets or sets the category.
@@ -29,7 +32,16 @@ namespace Business
         /// <value>
         /// The category.
         /// </value>
+        [DataMember]
         public Category Category { get; set; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Record"/> class.
+        /// </summary>
+        public Record()
+        {
+
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Record"/> class.
@@ -38,7 +50,7 @@ namespace Business
         public Record(Category category)
         {
             Category = category;
-            Entries = new NameValueCollection();
+            Entries = new Dictionary<string, string>();
 
             foreach (var item in category.Fields)
             {
@@ -54,9 +66,7 @@ namespace Business
         /// <returns></returns>
         public bool AddEntry(string field, string value)
         {
-            var result = Entries[field];
-
-            if (result == null)
+            if (!Entries.ContainsKey(field))
             {
                 // Entry doesn't exist
                 return false;

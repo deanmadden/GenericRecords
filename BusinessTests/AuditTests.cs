@@ -30,7 +30,7 @@ namespace BusinessTests
 
             // assert
             Assert.AreEqual(1, mockDatabase.AuditLogs.Count, "Incorrect number of audit logs.");
-            Assert.AreEqual("Added record type Dog, Breed=Rottweiler, Colour=Brown, Size=Big.", mockDatabase.AuditLogs[0], "Incorrect audit message.");
+            Assert.AreEqual("Added record type Dog, Breed=Rottweiler, Colour=Brown, Size=Big.", mockDatabase.AuditLogs[0].Message, "Incorrect audit message.");
         }
     }
 }

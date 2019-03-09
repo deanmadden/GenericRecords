@@ -16,13 +16,24 @@ namespace TestingConsoleApp
             LiteDBWrapper dbwrapper = new LiteDBWrapper();
             CategoryManager categoryManager = new CategoryManager(dbwrapper);
 
-            //Category dog = TestsHelper.InitialiseDogCategory();
+            Category dog = TestsHelper.InitialiseDogCategory();
             //categoryManager.Create(dog);
 
-            //Category aeroplane = TestsHelper.InitialiseAeroplaneCategory();
+            Category aeroplane = TestsHelper.InitialiseAeroplaneCategory();
             //categoryManager.Create(aeroplane);
 
             var categories = categoryManager.GetAll();
+
+            Record record = new Record(dog);
+            record.AddEntry("Breed", "Rottweiler");
+            record.AddEntry("Colour", "Brown");
+            record.AddEntry("Size", "Big");
+            RecordManager recordManager = new RecordManager(dbwrapper);
+            recordManager.Create(record);
+
+            var records = recordManager.GetAll();
+
+            var audits = dbwrapper.GetAuditRecords();
         }
     }
 }

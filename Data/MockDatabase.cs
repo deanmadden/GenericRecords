@@ -10,18 +10,18 @@ namespace Data
         {
             Categories = new List<Category>();
             Records = new List<Record>();
-            AuditLogs = new List<string>();
+            AuditLogs = new List<Audit>();
         }
 
         public IList<Category> Categories { get; set; }
 
         public IList<Record> Records { get; set; }
 
-        public IList<string> AuditLogs { get; set; }
+        public IList<Audit> AuditLogs { get; set; }
 
-        public void CreateAudit(string details)
+        public void CreateAudit(Audit audit)
         {
-            AuditLogs.Add(details);
+            AuditLogs.Add(audit);
         }
 
         public void CreateCategory(Category category)
@@ -37,6 +37,11 @@ namespace Data
         public IList<Record> GetAllRecords()
         {
             return Records.ToList();
+        }
+
+        public IList<Audit> GetAuditRecords()
+        {
+            return AuditLogs.ToList();
         }
 
         public IList<Category> GetCategories()
