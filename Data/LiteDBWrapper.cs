@@ -60,5 +60,28 @@ namespace Data
                 return audits.FindAll().ToList();
             }
         }
+
+        public void EditRecord(Record record)
+        {
+            using (var db = new LiteDatabase(@"C:\Temp\GenericRecordsData.db"))
+            {
+                var editRecord = GetRecordById(record.Id);
+
+                if (editRecord != null)
+                {
+                    var records = db.GetCollection<Record>("records");
+                    records.Update(record);
+                }
+            }
+        }
+
+        public Record GetRecordById(int id)
+        {
+            using (var db = new LiteDatabase(@"C:\Temp\GenericRecordsData.db"))
+            {
+                var records = db.GetCollection<Record>("records");
+                return records.FindById(id);
+            }
+        }
     }
 }

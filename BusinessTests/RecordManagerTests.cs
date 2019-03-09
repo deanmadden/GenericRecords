@@ -109,5 +109,47 @@ namespace BusinessTests
             Assert.AreEqual("A380", result[1].Entries["Model"], "Incorrect Model");
             Assert.AreEqual("GE", result[1].Entries["Engine"], "Incorrect Engine");
         }
+
+        [TestMethod]
+        public void EditRecordTest()
+        {
+            // arrange
+
+            MockDatabase mockDatabase = new MockDatabase();
+            Category dog = TestsHelper.InitialiseDogCategory();
+            CategoryManager categoryManager = new CategoryManager(mockDatabase);
+            categoryManager.Create(dog);
+
+            Record record = new Record(dog);
+            record.AddEntry("Breed", "Rottweiler");
+            record.AddEntry("Colour", "Brown");
+            record.AddEntry("Size", "Big");
+
+            Category aeroplane = TestsHelper.InitialiseAeroplaneCategory();
+            categoryManager.Create(aeroplane);
+
+            Record record2 = new Record(aeroplane);
+            record2.AddEntry("Make", "Airbus");
+            record2.AddEntry("Model", "A380");
+            record2.AddEntry("Engine", "GE");
+
+            RecordManager recordManager = new RecordManager(mockDatabase);
+            recordManager.Create(record);
+            recordManager.Create(record2);
+
+            record.Id = 0;
+            record.Entries["Colour"] = "Black";
+
+            // act
+
+            recordManager.Edit(record);
+
+            // assert
+
+            Assert.AreEqual("Dog", mockDatabase.Records[0].Category.Name, "Incorrect category");
+            Assert.AreEqual("Black", mockDatabase.Records[0].Entries["Colour"], "Incorrect colour");
+            Assert.AreEqual("Rottweiler", mockDatabase.Records[0].Entries["Breed"], "Incorrect Breed");
+            Assert.AreEqual("Big", mockDatabase.Records[0].Entries["Size"], "Incorrect Size");
+        }
     }
 }

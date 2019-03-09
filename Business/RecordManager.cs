@@ -34,6 +34,18 @@ namespace Business
         }
 
         /// <summary>
+        /// Edits the specified record.
+        /// </summary>
+        /// <param name="record">The record.</param>
+        public void Edit(Record record)
+        {
+            var oldRecord = dbWrapper.GetRecordById(record.Id);
+            dbWrapper.EditRecord(record);
+            Audit audit = new Audit(dbWrapper);
+            audit.Update(oldRecord, record);
+        }
+
+        /// <summary>
         /// Gets all.
         /// </summary>
         /// <returns></returns>

@@ -32,6 +32,14 @@ namespace Business
         void CreateRecord(Record record);
 
         /// <summary>
+        /// Edits the record.
+        /// </summary>
+        /// <param name="record">The record.</param>
+        void EditRecord(Record record);
+
+        Record GetRecordById(int id);
+
+        /// <summary>
         /// Creates the audit.
         /// </summary>
         /// <param name="details">The details.</param>

@@ -26,12 +26,26 @@ namespace Data
 
         public void CreateCategory(Category category)
         {
+            int id = Categories.Count;
+            category.Id = id;
             Categories.Add(category);
         }
 
         public void CreateRecord(Record record)
         {
+            int id = Records.Count;
+            record.Id = id;
             Records.Add(record);
+        }
+
+        public void EditRecord(Record record)
+        {
+            var editRecord = GetRecordById(record.Id);
+
+            if (editRecord != null)
+            {
+                editRecord = record;
+            }
         }
 
         public IList<Record> GetAllRecords()
@@ -47,6 +61,11 @@ namespace Data
         public IList<Category> GetCategories()
         {
             return Categories.ToList();
+        }
+
+        public Record GetRecordById(int id)
+        {
+            return Records.SingleOrDefault(x => x.Id == id);
         }
     }
 }

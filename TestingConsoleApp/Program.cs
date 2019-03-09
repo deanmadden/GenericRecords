@@ -14,8 +14,15 @@ namespace TestingConsoleApp
         public static void Main(string[] args)
         {
             //CreateCategoriesAndDogRecord();
-
             //CreateAeroplaneRecord();
+
+            LiteDBWrapper dbwrapper = new LiteDBWrapper();
+            RecordManager recordManager = new RecordManager(dbwrapper);
+            var records = recordManager.GetAll();
+
+            Record editRecord = records[0];
+            editRecord.Entries["Size"] = "Massive";
+            recordManager.Edit(editRecord);
         }
 
         private static void CreateAeroplaneRecord()

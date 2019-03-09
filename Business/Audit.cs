@@ -1,4 +1,6 @@
-﻿namespace Business
+﻿using System.Text;
+
+namespace Business
 {
     /// <summary>
     /// Audit
@@ -46,16 +48,17 @@
         /// <param name="record">The record.</param>
         public void Create(Record record)
         {
-            string auditMessage = $"Added record type {record.Category.Name}";
+            StringBuilder auditMessage = new StringBuilder();
+            auditMessage.Append($"Added record type {record.Category.Name}");
 
             foreach (var item in record.Entries)
             {
-                auditMessage += $", {item.Key}={item.Value}";
+                auditMessage.Append($", {item.Key}={item.Value}");
             }
 
-            auditMessage += ".";
+            auditMessage.Append(".");
 
-            this.Message = auditMessage;
+            this.Message = auditMessage.ToString();
 
             dbWrapper.CreateAudit(this);
         }
@@ -67,7 +70,26 @@
         /// <param name="newRecord">The new record.</param>
         public void Update(Record oldRecord, Record newRecord)
         {
+            StringBuilder auditMessage = new StringBuilder();
+            auditMessage.Append($"Amended record type {oldRecord.Category.Name}. Old:");
 
+            foreach (var item in oldRecord.Entries)
+            {
+                auditMessage.Append($" {item.Key}={item.Value}");
+            }
+
+            auditMessage.Append($" New:");
+
+            foreach (var item in newRecord.Entries)
+            {
+                auditMessage.Append($" {item.Key}={item.Value}");
+            }
+
+            auditMessage.Append(".");
+
+            this.Message = auditMessage.ToString();
+
+            dbWrapper.CreateAudit(this);
         }
 
         /// <summary>
