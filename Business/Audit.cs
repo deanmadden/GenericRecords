@@ -72,24 +72,25 @@ namespace Business
         {
             StringBuilder auditMessage = new StringBuilder();
             auditMessage.Append($"Amended record type {oldRecord.Category.Name}. Old:");
-
-            foreach (var item in oldRecord.Entries)
-            {
-                auditMessage.Append($" {item.Key}={item.Value}");
-            }
+            DisplayRecordEntries(oldRecord, auditMessage);
 
             auditMessage.Append($" New:");
 
-            foreach (var item in newRecord.Entries)
-            {
-                auditMessage.Append($" {item.Key}={item.Value}");
-            }
+            DisplayRecordEntries(newRecord, auditMessage);
 
             auditMessage.Append(".");
 
             this.Message = auditMessage.ToString();
 
             dbWrapper.CreateAudit(this);
+        }
+
+        private static void DisplayRecordEntries(Record oldRecord, StringBuilder auditMessage)
+        {
+            foreach (var item in oldRecord.Entries)
+            {
+                auditMessage.Append($" {item.Key}={item.Value}");
+            }
         }
 
         /// <summary>

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Business;
+﻿using Business;
 using BusinessTests;
 using Data;
 
@@ -15,7 +10,11 @@ namespace TestingConsoleApp
         {
             //CreateCategoriesAndDogRecord();
             //CreateAeroplaneRecord();
+            //EditRecord();
+        }
 
+        private static void EditRecord()
+        {
             LiteDBWrapper dbwrapper = new LiteDBWrapper();
             RecordManager recordManager = new RecordManager(dbwrapper);
             var records = recordManager.GetAll();

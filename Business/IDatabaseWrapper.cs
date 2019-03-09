@@ -37,6 +37,11 @@ namespace Business
         /// <param name="record">The record.</param>
         void EditRecord(Record record);
 
+        /// <summary>
+        /// Gets the record by identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         Record GetRecordById(int id);
 
         /// <summary>
